@@ -1,15 +1,14 @@
-plugins {
-    id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
-}
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'com.iqiyi.qigsaw.application'
 
 android {
-    compileSdk 30
+    compileSdkVersion 30
 
     defaultConfig {
         applicationId "com.sun.sunfeature"
-        minSdk 21
-        targetSdk 30
+        minSdkVersion 21
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 
@@ -26,14 +25,50 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
     dynamicFeatures = [':dynamicfeature']
 }
 
+//qigsawSplit {
+//
+//    /**
+//     * Whether repack base apk with 7z format.
+//     * default value is {@code false}
+//     */
+//    use7z = false
+//
+//    /**
+//     * optional, default 'false'
+//     * Whether upload all split APKs to CDN, ignored 'onDemand' declared in split AndroidManifest file.
+//     */
+//    releaseSplitApk = false
+//
+//    /**
+//     * Whether build multiple APKs for ABIs
+//     */
+//    multipleApkForABIs = true
+//
+//    /**
+//     * optional, default '1.0.0'
+//     * when update splits, you need upgrade value of splitInfoVersion
+//     */
+//    splitInfoVersion = '1.0.0'
+//
+//    /**
+//     * optional, default 'null'
+//     *
+//     * restrict split only work in processes which declared in split AndroidManifest file.
+//     */
+//    restrictWorkProcessesForSplits = ['java']
+//    /**
+//     * Activities of base apk which would load split's fragments or resources.
+//     */
+//    baseContainerActivities = ["com.sun.sunfeature.MainActivity"]
+//}
+
+
 dependencies {
     implementation 'androidx.core:core-ktx:1.0.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.4.10"
     implementation 'androidx.appcompat:appcompat:1.3.1'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
@@ -41,4 +76,5 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+   implementation "com.iqiyi.android.qigsaw:splitcore:1.4.1-hotfix01"
 }
